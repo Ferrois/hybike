@@ -13,6 +13,10 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  isAdmin:{
+    type: Boolean,
+    default: false
+  }
 //   ethnicity: { type: String },
 //   nric: { type: String, required: true },
 //   id: { type: String, required: true },
