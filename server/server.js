@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const dbURI = process.env.dbURI;
 const UserSchema = require("./Models/user");
 
-mongoose.connect(`${dbURI}`, () => console.log("Conntected to MongoDB" + dbURI));
+mongoose.connect(`${dbURI}`, () => console.log("Connected to MongoDB. Link: " + dbURI));
 
 // serve static files from the current directory
 app.use(express.static(__dirname));
@@ -33,14 +33,22 @@ app.get("/api", function (req, res) {
 app.post("/register", async (req, res) => {
   console.log(req.body)
   const { username, password } = req.body;
-  // const existingUser = await UserSchema.find({ username: username }).exec();
-  // console.log(existingUser);
-  // if (existingUser.length != 0) return res.send("User already exists!")
+  const existingUser = await UserSchema.find({ username: username }).exec();
+  console.log(existingUser);
+  if (existingUser.length != 0) return res.status(400).send("User already exists!")
   const user = new UserSchema({ username, password });
   console.log(user)
   const savedUser = await user.save();
-  res.send("Success!");
+  res.status(200).send("Success!");
 });
+
+app.post("/login", async(req, res) => {
+  const { username, password } = req.body;
+  const existingUser = await UserSchema.find({ username: username }).exec();
+  if (existingUser.length == 0) return res.status(401).send("User does not exist!");
+  if (existingUser[0].password != password) return res.status(401).send("Incorrect password!");
+  res.status(200).send("Success!");
+})
 
 // start the server
 app.listen(port, function () {
