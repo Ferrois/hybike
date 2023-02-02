@@ -1,15 +1,21 @@
-POST http://localhost:8080/register HTTP/1.1
+POST http://localhost:8080/auth/register HTTP/1.1
 content-type: application/json
 
 {
-    "username": "testing",
+    "username": "testing2",
     "password": "wongwee"
 }
 ###
-POST http://localhost:8080/login HTTP/1.1
+POST http://localhost:8080/auth/login HTTP/1.1
 content-type: application/json
 
 {
     "username": "testing",
     "password": "wongwee"
 }
+
+###
+GET http://localhost:8080/testing HTTP/1.1
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NzUzNTAxOTh9.kZX3odNFayI1WzmkAs0coD7ceFM4ieEkPYZXzpBsm4Q
+
