@@ -1,4 +1,4 @@
-[
+const locationData = [
   {
     "id": 0,
     "name": "Sengkang",
@@ -20,3 +20,5 @@
     "loc": [1.3511, 103.873]
   }
 ]
+
+module.exports = locationData

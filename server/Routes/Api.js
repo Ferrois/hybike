@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const locationData = require("../Assets/locations.json");
+const locationData = require("../Assets/locations");
 const StationSchema = require("../Models/station");
 
 router.get("/stat", async (req, res) => {
