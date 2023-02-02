@@ -15,10 +15,13 @@ app.use(express.json());
 //Paths Import
 const authRoute = require("./Routes/Auth");
 const testRoute = require("./Routes/Testing");
+const apiRoute = require("./Routes/Api")
 
 //Path initialization
 app.use("/auth", authRoute);
 app.use("/testing", testRoute);
+app.use("/api", apiRoute);
+
 
 //Receive post request on the /api route
 app.get("/ping", function (req, res) {
@@ -33,9 +36,7 @@ app.post("/batt", async (req, res) => {
   res.send("Received");
 });
 
-app.get("/api", function (req, res) {
-  console.log(req.body);
-});
+
 
 
 
