@@ -49,3 +49,12 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc
 {
     "stationId": 1
 }
+### ADMIN modify the station
+POST http://localhost:8080/admin/modifystat HTTP/1.1
+content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmczIiwiaWF0IjoxNjc1NTQyNzU5LCJleHAiOjE2NzU2MjkxNTl9.b9k0xEkRx4C5pt7gctcm6UVUb5oD7WZheHe2TroEWtE
+
+{
+    "stationId": 1,
+    "count": 7
+}

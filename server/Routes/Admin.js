@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const authenticateToken = require("../Helper/authenticateToken");
+const { returnStationInfo, updateStationInfo } = require("../Helper/stationFunctions");
 const { returnUserInfo, updateUserInfo } = require("../Helper/userFunctions");
 
 router.post("/modifystat", authenticateToken, async (req, res) => {
@@ -10,7 +11,7 @@ router.post("/modifystat", authenticateToken, async (req, res) => {
     
     // Guard Clause: Ensure user is admin
     if (!user.isAdmin) return res.status(401).json({ type: "failure", message: "You are not an admin!" });
-    
+
     // Ensure station exists
     const station = await returnStationInfo(stationId);
     if (!station) return res.status(400).json({ type: "failure", message: "Station does not exist!" });
