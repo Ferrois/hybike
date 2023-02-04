@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import Header from "../Components/Header";
 import { useAuth } from "../Context/AuthContext";
 
 export function Login() {
@@ -10,13 +12,14 @@ export function Login() {
     try {
       const status = await login(username, password);
       console.log(status)
+      toast("Logged in successfully", { type: "success" })
     } catch (err) {
       console.log(err.response.data);
     }
   };
   return (
     <>
-      <h1 className="text-2xl mx-auto">Login</h1>
+      <Header/>
       <form className="w-1/2 max-w-xs flex flex-col mx-auto">
         <label>Username</label>
         <input

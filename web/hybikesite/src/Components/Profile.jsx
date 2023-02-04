@@ -1,8 +1,30 @@
+import { Link } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
+import { BiLogOut } from "react-icons/bi";
 
-export default function Profile(){
-    return(
-        <div>
-            <h1>Profile</h1>
-        </div>
-    )
+function AuthActions() {
+  return <div className="flex gap-2"><Link to="/login">Login</Link><Link to="/register">Register</Link></div>;
+}
+
+function LogoutButton({username}) {
+  const { logout } = useAuth();
+  return (
+    <div className="flex items-center">
+      <div className="mx-2">{username}</div>
+      <button onClick={()=>logout()}>
+        <BiLogOut size={25} />
+      </button>
+    </div>
+  );
+}
+
+export default function Profile() {
+  const {
+    user: [userData, loading],
+  } = useAuth();
+  return (
+    <div className="text-white font-bold">
+      {loading ? "Loading" : userData ? <LogoutButton username={userData.username}/> : <AuthActions />}
+    </div>
+  );
 }

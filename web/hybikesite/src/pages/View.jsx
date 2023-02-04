@@ -6,9 +6,9 @@ import { useAuth } from "../Context/AuthContext";
 export function View() {
   const {userData} = useAuth();
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-start">
+    <div className="w-screen h-screen flex flex-col justify-start">
       <Header/>
-        <div className="w-1/2 aspect-video"><Map/></div>
+        <div className="flex-grow w-full"><Map/></div>
         {JSON.stringify(userData)}
     </div>
   );

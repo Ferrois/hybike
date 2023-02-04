@@ -14,8 +14,11 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const navigate = useNavigate();
   // Handle sign ups
-  const signup = (username, password) => {
-    return axios.post(`${SERVER_URL}/auth/signup`, { username, password });
+  const signup = async (username, password) => {
+    const signupRes = await axios.post(`${SERVER_URL}/auth/register`, { username, password });
+    setAccessToken(signupRes.data.accessToken);
+    navigate("/view");
+    return signupRes;
   };
 
   // Handle logins
@@ -30,6 +33,12 @@ export function AuthProvider({ children }) {
     return loginRes;
   };
 
+  // Handle sign outs
+  const logout = () => {
+    setAccessToken(null);
+    navigate("/");
+  };
+
   // Handle authenticated GET requests
   const authGet = (url, options) => {
     if (!accessToken) {
@@ -42,11 +51,17 @@ export function AuthProvider({ children }) {
     return axios.get(`${SERVER_URL}${url}`, { headers, ...options });
   };
 
-  const [userData] = useUserData(authGet)
+  // Handle access token
   const [accessToken, setAccessToken] = useLocalStorage("accessToken", null);
 
+  // Get user data
+  const [userData, loading] = useUserData(authGet,accessToken);
+
+  // Serve context
   return (
-    <Context.Provider value={{ signup, login, authGet, userData }}>
+    <Context.Provider
+      value={{ signup, login, authGet, user: [userData, loading], logout }}
+    >
       {children}
     </Context.Provider>
   );

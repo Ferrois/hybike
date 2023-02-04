@@ -14,6 +14,20 @@ router.post("/register", async (req, res) => {
       .status(400)
       .json({ type: "failure", message: "User already exists!" });
 
+  // Guard clauses
+  if (username.length < 5)
+    return res
+      .status(400)
+      .json({ type: "failure", message: "Username must be at least 5 characters!" });
+  if (password.length < 8)
+    return res
+      .status(400)
+      .json({ type: "failure", message: "Password must be at least 8 characters!" });
+  if (username.includes(" "))
+    return res
+      .status(400)
+      .json({ type: "failure", message: "Username cannot contain spaces!" });
+
   // Create new User
   const user = new UserSchema({ username, password });
 
