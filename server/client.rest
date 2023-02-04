@@ -2,7 +2,7 @@ POST http://localhost:8080/auth/register HTTP/1.1
 content-type: application/json
 
 {
-    "username": "testing2",
+    "username": "testing3",
     "password": "wongwee"
 }
 ###
@@ -17,7 +17,7 @@ content-type: application/json
 ###
 GET http://localhost:8080/testing HTTP/1.1
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NzUzNTExNjMsImV4cCI6MTY3NTQzNzU2M30.7GyujZHkGmsIubD-mRGKqS2mI1l0hDElE1gyz3VbphQ
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmczIiwiaWF0IjoxNjc1NTA5ODAxLCJleHAiOjE2NzU1OTYyMDF9.QBTYHReO7_m-3HLZuOr4VAA5yxb6ddLvowyRTSlpbQM
 
 ###
 GET http://localhost:8080/api/stat HTTP/1.1

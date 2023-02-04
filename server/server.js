@@ -28,11 +28,14 @@ app.use(express.json());
 const authRoute = require("./Routes/Auth");
 const testRoute = require("./Routes/Testing");
 const apiRoute = require("./Routes/Api");
+const userRoute = require("./Routes/User");
+
 
 //Path initialization
 app.use("/auth", authRoute);
 app.use("/testing", testRoute);
 app.use("/api", apiRoute);
+app.use("/user", userRoute);
 
 //Receive post request on the /api route
 app.get("/ping", function (req, res) {

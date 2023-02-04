@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import useStatData from "../Hooks/useStatData";
 import StationMarker from "./StationMarker";
+import StationLayer from "./StationLayer";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -20,7 +21,7 @@ function Map() {
         attributionControl={false}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {statData && statData.map((stat) => (<StationMarker {...stat} />))}
+        <StationLayer statData={statData}/>
       </MapContainer>
       {JSON.stringify(statData)}
     </>
