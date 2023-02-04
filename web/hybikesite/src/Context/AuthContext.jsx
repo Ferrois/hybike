@@ -51,6 +51,18 @@ export function AuthProvider({ children }) {
     return axios.get(`${SERVER_URL}${url}`, { headers, ...options });
   };
 
+  //Handle Authenticated Post Requests
+  const authPost = (url, options) => {
+    if (!accessToken) {
+      throw new Error("No access token");
+    }
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken || ""}`,
+    };
+    return axios.post(`${SERVER_URL}${url}`, { headers, ...options });
+  };
+
   // Handle access token
   const [accessToken, setAccessToken] = useLocalStorage("accessToken", null);
 
@@ -60,7 +72,7 @@ export function AuthProvider({ children }) {
   // Serve context
   return (
     <Context.Provider
-      value={{ signup, login, authGet, user: [userData, loading], logout }}
+      value={{ signup, login, authGet, user: [userData, loading], logout, authPost }}
     >
       {children}
     </Context.Provider>
