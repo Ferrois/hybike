@@ -3,14 +3,12 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import useStatData from "../Hooks/useStatData";
+import StationMarker from "./StationMarker";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
 function Map() {
-  const [statData] = useStatData();
-  useEffect(() => {
-    console.log(statData);
-  }, [statData]);
+  const [statData,loading] = useStatData();
 
   return (
     <>
@@ -22,6 +20,7 @@ function Map() {
         attributionControl={false}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {statData && statData.map((stat) => (<StationMarker {...stat} />))}
       </MapContainer>
       {JSON.stringify(statData)}
     </>
