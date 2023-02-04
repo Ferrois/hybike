@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useContext, createContext } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SERVER_URL } from "../config";
 import useLocalStorage from "../Hooks/useLocalStorage";
+import useUserData from "../Hooks/useUserData";
 
 const Context = createContext(null);
 
@@ -41,10 +42,11 @@ export function AuthProvider({ children }) {
     return axios.get(`${SERVER_URL}${url}`, { headers, ...options });
   };
 
+  const [userData] = useUserData(authGet)
   const [accessToken, setAccessToken] = useLocalStorage("accessToken", null);
 
   return (
-    <Context.Provider value={{ signup, login, authGet }}>
+    <Context.Provider value={{ signup, login, authGet, userData }}>
       {children}
     </Context.Provider>
   );
