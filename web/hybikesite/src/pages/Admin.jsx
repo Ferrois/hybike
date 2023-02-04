@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import Header from "../Components/Header";
 import { useAuth } from "../Context/AuthContext";
 import useStatData from "../Hooks/useStatData";
@@ -15,6 +16,7 @@ function StationCard({ id, name, count, capacity }) {
       });
       toast(res.data.message, { type: "success" });
     } catch (err) {
+        console.log(err)
       toast(err.response.data.message, { type: "error" });
     }
   };

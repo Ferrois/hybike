@@ -29,13 +29,14 @@ const authRoute = require("./Routes/Auth");
 const testRoute = require("./Routes/Testing");
 const apiRoute = require("./Routes/Api");
 const userRoute = require("./Routes/User");
-
+const adminRoute = require("./Routes/Admin")
 
 //Path initialization
 app.use("/auth", authRoute);
 app.use("/testing", testRoute);
 app.use("/api", apiRoute);
 app.use("/user", userRoute);
+app.use("/admin", adminRoute)
 
 //Receive post request on the /api route
 app.get("/ping", function (req, res) {

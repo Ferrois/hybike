@@ -11,7 +11,7 @@ function authenticateToken(req, res, next) {
 
   // verify the token
   jwt.verify(token, process.env.SECRETKEY, (err, user) => {
-    if (err) return res.sendStatus(403);
+    if (err) return res.sendStatus(403).json({ type: "noacc", message: "Invalid Token" });
     req.user = user;
     next();
   });
