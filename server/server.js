@@ -30,7 +30,7 @@ const testRoute = require("./Routes/Testing");
 const apiRoute = require("./Routes/Api");
 const userRoute = require("./Routes/User");
 const adminRoute = require("./Routes/Admin");
-const stationRoute = require("./Rotues/Station");
+const stationRoute = require("./Routes/Station");
 
 //Path initialization
 app.use("/auth", authRoute);
