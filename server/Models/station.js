@@ -14,7 +14,7 @@ const StationSchema = mongoose.Schema({
     type: Number,
     default: 0,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model("stations", StationSchema);
