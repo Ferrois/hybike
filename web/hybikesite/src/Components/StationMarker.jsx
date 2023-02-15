@@ -18,11 +18,12 @@ function MarkerIcon() {
   );
 }
 
-function StationDisplay({ name, count, capacity, loc }) {
+function StationDisplay({ id, name, count, capacity, loc }) {
   return (
     <Popup>
       <div className="flex flex-col">
         <div className="text-lg font-bold">{name}</div>
+        <div className="text-xs">Station Id: {id}</div>
         <div className="flex flex-row justify-evenly">
           <div className="flex flex-col">
             <div className="text-sm">Available{" "}</div>

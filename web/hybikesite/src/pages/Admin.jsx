@@ -12,7 +12,7 @@ function StationCard({ id, name, count, capacity }) {
     try {
       const res = await authPost(`/admin/modifystat`, {
         stationId: id,
-        count: count,
+        count: newcount,
       });
       toast(res.data.message, { type: "success" });
     } catch (err) {
@@ -21,7 +21,7 @@ function StationCard({ id, name, count, capacity }) {
     }
   };
   return (
-    <div className=" bg-gray-100">
+    <div className=" bg-gray-100 mt-2 border-2 border-black">
       <div>{name}</div>
       <div>
         {count}/{capacity}
@@ -44,7 +44,7 @@ function Admin() {
     <div className="w-screen h-screen flex flex-col items-center justify-start">
       <Header />
       <div>Admin Page</div>
-      {statData && statData.map((station) => <StationCard {...station} />)}
+      {statData && statData.map((station) => <StationCard key={station.id} {...station} />)}
     </div>
   );
 }

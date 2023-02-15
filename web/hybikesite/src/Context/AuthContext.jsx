@@ -15,7 +15,10 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate();
   // Handle sign ups
   const signup = async (username, password) => {
-    const signupRes = await axios.post(`${SERVER_URL}/auth/register`, { username, password });
+    const signupRes = await axios.post(`${SERVER_URL}/auth/register`, {
+      username,
+      password,
+    });
     setAccessToken(signupRes.data.accessToken);
     navigate("/view");
     return signupRes;
@@ -52,7 +55,7 @@ export function AuthProvider({ children }) {
   };
 
   //Handle Authenticated Post Requests
-  const authPost = (url, options) => {
+  const authPost = (url, body, options) => {
     if (!accessToken) {
       throw new Error("No access token");
     }
@@ -60,19 +63,26 @@ export function AuthProvider({ children }) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken || ""}`,
     };
-    return axios.post(`${SERVER_URL}${url}`, { headers, ...options });
+    return axios.post(`${SERVER_URL}${url}`, body, { headers, ...options });
   };
 
   // Handle access token
   const [accessToken, setAccessToken] = useLocalStorage("accessToken", null);
 
   // Get user data
-  const [userData, loading] = useUserData(authGet,accessToken);
+  const [userData, loading] = useUserData(authGet, accessToken);
 
   // Serve context
   return (
     <Context.Provider
-      value={{ signup, login, authGet, user: [userData, loading], logout, authPost }}
+      value={{
+        signup,
+        login,
+        authGet,
+        user: [userData, loading],
+        logout,
+        authPost,
+      }}
     >
       {children}
     </Context.Provider>
