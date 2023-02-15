@@ -1,19 +1,23 @@
 var stationQueue = [];
 
-function addQueuer(username, station) {
-  stationQueue.push({ station, username });
+function addQueuer(username,stationId) {
+  stationQueue.push({ stationId, username });
 }
 
-function removeQueuer(username,station) {
-    stationQueue = stationQueue.filter((queuer) => queuer.username !== username && queuer.station !== station);
+function removeQueuer(username,stationId) {
+    stationQueue = stationQueue.filter((queuer) => queuer.username !== username && queuer.stationId !== stationId);
 }
 
-function isAvailable(station) {
-  return !stationQueue.find((queuer) => queuer.station === station);
+function isAvailable(stationId) {
+  return !stationQueue.find((queuer) => queuer.stationId === stationId);
 }
 
-function returnQueuer(station) {
-  return stationQueue.find((queuer) => queuer.station === station);
+function returnQueuer(stationId) {
+  return stationQueue.find((queuer) => queuer.stationId === stationId);
 }
 
-module.exports = { addQueuer,removeQueuer, isAvailable, returnQueuer };
+function returnWholeQueue() {
+  return stationQueue;
+}
+
+module.exports = { addQueuer,removeQueuer, isAvailable, returnQueuer, returnWholeQueue };

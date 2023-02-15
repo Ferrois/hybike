@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/",  async (req, res) => {
     const { stationId } = req.body;
+    console.log(stationId);
     if (isAvailable(stationId)) return res.status(200).json({ type: "success", message: "Pong" });
     const {username} = returnQueuer(stationId);
     return res.status(200).json({ type: "request" , message:`${username} is requesting the station`})

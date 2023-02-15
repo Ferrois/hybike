@@ -44,7 +44,7 @@ content-type: application/json
 ### Use the station
 POST http://localhost:8080/user/usestation HTTP/1.1
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmczIiwiaWF0IjoxNjc1NTQyNzU5LCJleHAiOjE2NzU2MjkxNTl9.b9k0xEkRx4C5pt7gctcm6UVUb5oD7WZheHe2TroEWtE
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmczIiwiaWF0IjoxNjc2NDc0MDE4LCJleHAiOjE2NzY1NjA0MTh9.kYiZ8QNM3-4gufBnmNx2dizyC1asVPNsKnsR14CGnFM
 
 {
     "stationId": 1
@@ -52,9 +52,26 @@ authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc
 ### ADMIN modify the station
 POST http://localhost:8080/admin/modifystat HTTP/1.1
 content-type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmczIiwiaWF0IjoxNjc1NTQyNzU5LCJleHAiOjE2NzU2MjkxNTl9.b9k0xEkRx4C5pt7gctcm6UVUb5oD7WZheHe2TroEWtE
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmczIiwiaWF0IjoxNjc2NDc0MDE4LCJleHAiOjE2NzY1NjA0MTh9.kYiZ8QNM3-4gufBnmNx2dizyC1asVPNsKnsR14CGnFM
 
 {
     "stationId": 1,
     "count": 7
 }
+
+###
+POST http://localhost:8080/station HTTP/1.1
+content-type: application/json
+
+{
+    "stationId":1
+}
+
+###
+POST http://localhost:8080/station/accept HTTP/1.1
+content-type: application/json
+
+{
+    "stationId":1
+}
+

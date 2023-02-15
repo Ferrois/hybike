@@ -7,7 +7,7 @@
 
 const char* ssid = "FerPhone";
 const char* password = "69696969";
-const char* serverName = "https://hybike.herokuapp.com/station";
+const char* serverName = "http://hybike.herokuapp.com/station";
 
 char keys[ROW_NUM][COLUMN_NUM] = {
   {'1', '2', '3'},
@@ -54,15 +54,17 @@ void loop() {
       // If you need Node-RED/server authentication, insert user and password below
       //http.setAuthorization("REPLACE_WITH_SERVER_USERNAME", "REPLACE_WITH_SERVER_PASSWORD");
       
-//      http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-      String httpRequestData = "test";           
+      http.addHeader("Content-Type", "application/json");
+      String httpRequestData = "{\"stationId\":\"1\"}";
       int httpResponseCode = http.POST(httpRequestData);
 
       Serial.print("HTTP Response code: ");
       Serial.println(httpResponseCode);
+      Serial.println(http.getString());
       http.end();
     }else{
       Serial.println("WiFi Disconnected");
     }
+    pingLoop += pingDelay;
   }
 }
