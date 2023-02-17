@@ -19,8 +19,9 @@ export function Login() {
     }
   };
   return (
-    <>
+    <div className="flex flex-col h-screen">
       <Header/>
+      <div className="flex flex-grow items-center justify-center">
       <form className="w-1/2 max-w-xs flex flex-col mx-auto">
         <label>Username</label>
         <input
@@ -43,7 +44,7 @@ export function Login() {
         >
           Login
         </button>
-      </form>
-    </>
+      </form></div>
+    </div>
   );
 }

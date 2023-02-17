@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 import Toastify from "./Toastify";
+import "../../App.css"
 
 export function AuthLayout() {
   return (
     <AuthProvider>
-      <Outlet />
-      <Toastify/>
+      <div className="poppins">
+        <Outlet />
+        <Toastify />
+      </div>
     </AuthProvider>
   );
 }

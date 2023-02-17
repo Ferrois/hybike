@@ -1,1 +1,12 @@
 /* Future use */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto+Mono&family=Poppins&display=swap');
+
+.quicksand{
+    font-family: 'Quicksand', sans-serif;
+}
+.roboto{
+    font-family: 'Roboto Mono', monospace;
+}
+.poppins{
+    font-family: 'Poppins', sans-serif;
+}
