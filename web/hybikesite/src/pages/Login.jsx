@@ -15,6 +15,7 @@ export function Login() {
       toast("Logged in successfully", { type: "success" })
     } catch (err) {
       console.log(err.response.data);
+      toast(err.response.data.message, { type: "error" })
     }
   };
   return (

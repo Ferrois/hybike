@@ -8,8 +8,7 @@ export function View() {
   return (
     <div className="w-screen h-screen flex flex-col justify-start">
       <Header/>
-        <div className="flex-grow w-full"><Map/></div>
-        {JSON.stringify(userData)}
+        <div className="flex-grow w-full relative"><Map/></div>
     </div>
   );
 }

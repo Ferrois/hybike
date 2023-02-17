@@ -16,7 +16,7 @@ function StationCard({ id, name, count, capacity }) {
       });
       toast(res.data.message, { type: "success" });
     } catch (err) {
-        console.log(err)
+      console.log(err);
       toast(err.response.data.message, { type: "error" });
     }
   };
@@ -32,7 +32,9 @@ function StationCard({ id, name, count, capacity }) {
           value={newcount}
           onChange={(e) => setNewcount(e.target.value)}
         />
-        <button type="submit" onClick={(e) => handleModifyStation(e)} >Modify</button>
+        <button type="submit" onClick={(e) => handleModifyStation(e)}>
+          Modify
+        </button>
       </form>
     </div>
   );
@@ -44,7 +46,10 @@ function Admin() {
     <div className="w-screen h-screen flex flex-col items-center justify-start">
       <Header />
       <div>Admin Page</div>
-      {statData && statData.map((station) => <StationCard key={station.id} {...station} />)}
+      {statData &&
+        statData.map((station) => (
+          <StationCard key={station.id} {...station} />
+        ))}
     </div>
   );
 }

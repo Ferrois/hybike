@@ -6,10 +6,11 @@ function AuthActions() {
   return <div className="flex gap-2"><Link to="/login">Login</Link><Link to="/register">Register</Link></div>;
 }
 
-function LogoutButton({username}) {
+function LogoutButton({username,points}) {
   const { logout } = useAuth();
   return (
     <div className="flex items-center">
+      <div>{points}</div>
       <div className="mx-2">{username}</div>
       <button onClick={()=>logout()}>
         <BiLogOut size={25} />
@@ -24,7 +25,7 @@ export default function Profile() {
   } = useAuth();
   return (
     <div className="text-white font-bold">
-      {loading ? "Loading" : userData ? <LogoutButton username={userData.username}/> : <AuthActions />}
+      {loading ? "Loading" : userData ? <LogoutButton username={userData.username} points={userData.points}/> : <AuthActions />}
     </div>
   );
 }

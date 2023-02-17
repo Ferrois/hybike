@@ -39,12 +39,17 @@ function Scan() {
           <button type="submit" onClick={(e) => handleSubmit(e)}>
             Submit
           </button> */}
-          <Scanner handleScan={handleScan}/>
-
+          <Scanner handleScan={handleScan} />
         </div>
         <Modal showModal={showModal} setShowModal={setShowModal}>
           <div>{stationId}</div>
-          <div><form><button type="submit" onClick={(e)=>handleSubmit(e)}>Authorise & Unlock</button></form></div>
+          <div>
+            <form>
+              <button type="submit" onClick={(e) => handleSubmit(e)}>
+                Authorise & Unlock
+              </button>
+            </form>
+          </div>
         </Modal>
       </div>
     </>
