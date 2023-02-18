@@ -79,6 +79,18 @@ const locationData = [
     name: "Bukit Batok",
     loc: [1.349167, 103.749167],
   },
+  { id: 16, name: "Bukit Gombak", loc: [1.359167, 103.751667] },
+  { id: 17, name: "Bukit Timah", loc: [1.334167, 103.776667] },
+  {
+    id: 18,
+    name: "Novena",
+    loc: [1.320833, 103.843333],
+  },
+  {
+    id: 19,
+    name: "Toa Payoh",
+    loc: [1.335833, 103.849167],
+  },
 ];
 
 module.exports = locationData;

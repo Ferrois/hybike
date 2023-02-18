@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Button } from "../Components/Button";
 import Header from "../Components/Header";
+import { Input } from "../Components/Input";
 import { Modal } from "../Components/Modal";
 import { Scanner } from "../Components/Scanner";
 import { useAuth } from "../Context/AuthContext";
@@ -25,29 +27,33 @@ function Scan() {
   };
   return (
     <>
-      <div className="w-screen h-screen flex flex-col items-center justify-start">
+      <div className="w-full min-h-screen flex flex-col items-center justify-start bg-slate-700 text-white">
         <Header />
-        <div>
-          {/* <div>Swap Wattainables</div>
-        <form>
-          <input
-            type="text"
-            placeholder="Input Station Id"
-            onChange={(e) => setStationId(e.target.value)}
-            value={stationId}
-          />
-          <button type="submit" onClick={(e) => handleSubmit(e)}>
-            Submit
-          </button> */}
+        <h1>Scan the QR Code of the kiosk</h1>
+        <div className="container flex items-center justify-center">
           <Scanner handleScan={handleScan} />
+        </div>
+        <div className="mb-2">
+          <h1>Alternatively, Input Station ID:</h1>
+          <form>
+            <Input
+              value={stationId}
+              onChange={(e) => {
+                setStationId(e.target.value);
+              }}
+            />
+            <Button type="submit" onClick={(e) => handleSubmit(e)}>
+              Unlock
+            </Button>
+          </form>
         </div>
         <Modal showModal={showModal} setShowModal={setShowModal}>
           <div>{stationId}</div>
           <div>
             <form>
-              <button type="submit" onClick={(e) => handleSubmit(e)}>
+              <Button type="submit" onClick={(e) => handleSubmit(e)}>
                 Authorise & Unlock
-              </button>
+              </Button>
             </form>
           </div>
         </Modal>

@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 
 function Loyalty() {
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-start">
+    <div className="w-screen h-screen flex flex-col items-center justify-start bg-gray-700">
       <Header />
       <div>
         Loyalty Page (return the batteries safely to earn, charge the batteries

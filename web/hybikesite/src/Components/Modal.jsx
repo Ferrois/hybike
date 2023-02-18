@@ -2,6 +2,7 @@
 
 // src\Components\Modal.jsx
 import React, { useEffect, useRef } from "react";
+import { Button } from "./Button";
 
 export function Modal({ children, showModal, setShowModal }) {
   const modalRef = useRef();
@@ -25,10 +26,10 @@ export function Modal({ children, showModal, setShowModal }) {
     <>
       {/* <button onClick={openModal}>Open Modal</button> */}
       {showModal ? (
-        <div className="fixed w-screen h-screen z-10" ref={modalRef}>
+        <div className="fixed w-screen h-screen z-10 text-black" ref={modalRef}>
           <div className="flex justify-center items-center w-full h-full">
             <div className="w-1/3 h-1/2 bg-gray-100 rounded-md shadow-lg">
-              <button onClick={closeModal}>Close Modal</button>
+              <Button onClick={closeModal}>Close</Button>
               {children}
             </div>
           </div>

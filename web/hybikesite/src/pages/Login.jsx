@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Button } from "../Components/Button";
 import Header from "../Components/Header";
+import { Input } from "../Components/Input";
 import { useAuth } from "../Context/AuthContext";
 
 export function Login() {
@@ -19,31 +22,33 @@ export function Login() {
     }
   };
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-gray-700 text-white">
       <Header/>
-      <div className="flex flex-grow items-center justify-center">
+      <div className="flex flex-grow items-center justify-center flex-col">
+        <div className="text-2xl pb-5">Login.</div>
       <form className="w-1/2 max-w-xs flex flex-col mx-auto">
         <label>Username</label>
-        <input
+        <Input
           className="bg-gray-100 border-black border-2 rounded-md"
           name="username"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
         <label>Password</label>
-        <input
+        <Input
           className="bg-gray-100 border-black border-2 rounded-md"
           name="password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <button
+        <Link to="/register" className="text-blue-300 underline hover:text-blue-200">Create your account</Link>
+        <Button
           onClick={(e) => handleLogin(e)}
-          className="bg-blue-500 rounded-md shadow-md border-gray-800 border-2 mt-3 text-white font-bold"
+          className="bg-blue-500 rounded-md shadow-md border-gray-800 border-2 mt-2 text-white font-bold"
         >
           Login
-        </button>
+        </Button>
       </form></div>
     </div>
   );

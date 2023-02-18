@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
       password,
     });
     setAccessToken(signupRes.data.accessToken);
-    navigate("/view");
+    navigate("/dash");
     return signupRes;
   };
 
@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
     });
 
     setAccessToken(loginRes.data.accessToken);
-    navigate("/view");
+    navigate("/dash");
     return loginRes;
   };
 

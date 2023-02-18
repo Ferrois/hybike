@@ -53,7 +53,7 @@ function Header() {
             </Link>
             <Link
               className="hover:scale-110 hover:text-gray-300 transition-all"
-              to="/loyal"
+              to="/store"
             >
               <span>Store</span>
             </Link>
@@ -93,7 +93,7 @@ function Header() {
           <li className="nav-item">
             <Link
               className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-              to="/loyal"
+              to="/store"
             >
               <span className="ml-2">Store</span>
             </Link>
